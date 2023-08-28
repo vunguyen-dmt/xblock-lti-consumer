@@ -120,8 +120,8 @@ class LtiConsumer1p3:
         # cache and includes the cache key as the lti_message_hint query or form parameter to retrieve it later.
         launch_data_key = cache_lti_1p3_launch_data(launch_data)
 
-        oidc_url = self.oidc_url + "?"
-
+        oidc_url = self.oidc_url + "&" if "?" in self.oidc_url else self.oidc_url + "?"
+        
         login_hint = user_id
         parameters = {
             "iss": self.iss,

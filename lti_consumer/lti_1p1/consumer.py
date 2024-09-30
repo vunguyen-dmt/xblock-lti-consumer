@@ -191,7 +191,17 @@ class LtiConsumer1p1:
             })
 
         if person_name_full:
+            split_fullname = person_name_full.rsplit(" ", 1)
+            if len(split_fullname) > 1:
+                firstname = split_fullname[1]
+                lastname = split_fullname[0]
+            else:    
+                firstname = ""
+                lastname = split_fullname[0]
+            
             self.lti_user_data.update({
+                'lis_person_name_given': firstname,
+                'lis_person_name_family': lastname,
                 'lis_person_name_full': person_name_full,
             })
 
